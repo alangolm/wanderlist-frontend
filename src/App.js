@@ -1,39 +1,38 @@
 import React, { Component } from 'react';
 import './assets/css/App.css';
-import { getUsers } from './action'
+// import { getUsers } from './action'
 import { connect } from 'react-redux'
 import MyListContainer from './components/MyListContainer'
+import NewDestinationForm from './components/NewDestinationForm'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 class App extends Component {
 
-
-componentDidMount() {
-  this.props.getUsers()
-}
-
+// componentDidMount() {
+//   this.props.getUsers()
+// }
 
   render() {
-    // console.log("props are", this.props);
-    // console.log("state is", this.state);
     return (
-      <div>
-        {/* <h1>Hello</h1> */}
-        <MyListContainer />
-      </div>
+      <Switch>
+        <Route exact path="/" />
+        <Route exact path="/new_destination" component={NewDestinationForm} />
+        <Route exact path="/destinations" component={MyListContainer} />
+      </Switch>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    users: state.users
-  }
-}
+// function mapStateToProps(state) {
+//   return {
+//     users: state.users
+//   }
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getUsers: () => dispatch(getUsers())
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     getUsers: () => dispatch(getUsers())
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect()(App));

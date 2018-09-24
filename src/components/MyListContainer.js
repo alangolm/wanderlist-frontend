@@ -1,40 +1,28 @@
 import React, { Component } from 'react'
-import AddDestinationButton from './AddDestinationButton'
 import DestinationBox from './DestinationBox'
 import NewDestinationForm from './NewDestinationForm'
 import { connect } from 'react-redux'
+import { getDestinations } from '../action'
 
 class MyListContainer extends Component {
-  // console.log(props);
-  state = {
-    clicked: false
-  }
 
-  handleClick = event => {
-    // console.log("hello");
-    // (this.state.clicked === false) ? null : <NewDestinationForm />
-    this.setState({
-      clicked: !this.state.clicked
-    })
+  componentDidMount() {
+    this.props.getDestinations()
   }
 
   render() {
 
-
+    const destinations = this.props.destinations.map(dest => {
+      return <DestinationBox key={dest.id} destination={dest} />
+    })
 
     return (
-
-
       <div>
         <h1>Destinations/Events:</h1>
-        {/* <h2>{props.users[0]}</h2> */}
-        {/* <AddDestinationButton /> */}
-        <button value="Add Destination" onClick={this.handleClick}>
+        <button value="Add Destination">
           Add Destination
         </button>
-        {(this.state.clicked) ? <NewDestinationForm /> : null}
-        {/* <NewDestinationForm /> */}
-        <DestinationBox />
+        {this.props.destinations.length > 0 ? destinations : null}
       </div>
     )
   }
@@ -42,8 +30,15 @@ class MyListContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    users: state.users
+    users: state.users,
+    destinations: state.destinations
   }
 }
 
-export default connect(mapStateToProps)(MyListContainer)
+function mapDispatchToProps(dispatch) {
+  return {
+    getDestinations: () => dispatch(getDestinations())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyListContainer)

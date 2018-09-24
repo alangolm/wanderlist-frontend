@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addDestination } from '../action'
 import DatePicker from './DatePicker'
+import DestinationBox from './DestinationBox'
 
 class NewDestinationForm extends Component {
 
@@ -10,7 +11,7 @@ class NewDestinationForm extends Component {
     description: '',
     city: '',
     country: '',
-    startDate: '',
+    date: '',
     endDate: ''
   }
 
@@ -35,26 +36,24 @@ class NewDestinationForm extends Component {
   handleCountryInput = event => {
     this.setState({
       country: event.target.value
-    }, console.log(this.state))
+    })
   }
 
   handleSubmit = event => {
-    // debugger
     event.preventDefault()
-    // console.log(this.state);
     this.props.addDestination(this.state)
   }
 
   handleStartDate = startDate => {
     this.setState({
-      startDate: startDate._d
+      date: startDate._d
     })
   }
 
   render() {
-    // console.log(this.state);
     return (
       <div>
+        <h1>Add To Your Destinations!</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Title" onChange={this.handleTitleInput} /><br />
           <textarea type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br />
