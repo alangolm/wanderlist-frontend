@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 import './assets/css/App.css';
 import { getUsers } from './action'
 import { connect } from 'react-redux'
+import MyListContainer from './components/MyListContainer'
 
 class App extends Component {
 
 
 componentDidMount() {
-  // fetch(url)
-  // .then(res => res.json())
-  // .then(data => console.log(data))
   this.props.getUsers()
 }
 
 
   render() {
-    console.log("props are", this.props);
-    console.log("state is", this.state);
+    // console.log("props are", this.props);
+    // console.log("state is", this.state);
     return (
       <div>
-        <h1>Hello</h1>
+        {/* <h1>Hello</h1> */}
+        <MyListContainer />
       </div>
     )
   }
