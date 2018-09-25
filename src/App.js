@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import MyListContainer from './components/MyListContainer'
 import NewDestinationForm from './components/NewDestinationForm'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import MapBox from './components/MapBox'
 
 class App extends Component {
 
@@ -15,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" />
+        <Route exact path="/my_world" component={MapBox} />
         <Route exact path="/new_destination" component={NewDestinationForm} />
         <Route exact path="/destinations" component={MyListContainer} />
       </Switch>

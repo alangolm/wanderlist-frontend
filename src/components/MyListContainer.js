@@ -21,7 +21,7 @@ class MyListContainer extends Component {
         <h1>Destinations/Events:</h1>
         <button value="Add Destination">
           Add Destination
-        </button>
+        </button><br /><br />
         {this.props.destinations.length > 0 ? destinations : null}
       </div>
     )
