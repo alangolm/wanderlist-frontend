@@ -26,6 +26,6 @@ export function getDestinations() {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/destinations')
     .then(res => res.json())
-    .then(data => dispatch({ type: 'GET_DESTINATIONS', payload: data }))
+    .then(data => dispatch({ type: 'GET_DESTINATIONS', payload: data }, console.log("this is the data from the backend:", data)))
   }
 }

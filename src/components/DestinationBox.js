@@ -22,7 +22,8 @@ const styles = {
 
 const DestinationBox = props => {
   // console.log(props);
-  console.log(props)
+  console.log("these are the props coming from the container:", props)
+  // debugger
   const { classes } = props
   return (
     <Card className={classes.card} className={classes.border}>
@@ -38,7 +39,7 @@ const DestinationBox = props => {
             {props.destination.city}, {props.destination.country}
           </Typography>
           <Typography component="p">
-            {props.destination.date}
+            {props.destination.date.slice(0, 10)}
           </Typography>
         </CardContent>
       </CardActionArea>
