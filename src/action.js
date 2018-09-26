@@ -22,17 +22,27 @@ export function getDestinations() {
   }
 }
 
-export function editDestination() {
+export function editDestination(editForm, id) {
+  // debugger
   return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/destinations', {
+    fetch(`http://localhost:3000/api/v1/destinations/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
       },
       body: JSON.stringify({
-
+        destination: {
+          title: editForm.title,
+          description: editForm.description,
+          city: editForm.city,
+          state: editForm.state,
+          country: editForm.country,
+          date: editForm.date
+        }
       })
     })
+    .then(res => res.json())
+    .then(data => dispatch({  type: 'EDIT_DESTINATION', payload: data }))
   }
 }
 

@@ -24,10 +24,10 @@ const styles = {
 const DestinationBox = props => {
   const { classes } = props
 
-  const handleEditClick = () => {
-    props.dipatch({type: 'SET_CURRENT_DESTINATION', payload: props.destination})
-    // loads the modal
-  }
+  // const handleEditClick = () => {
+  //   props.dipatch({type: 'SET_CURRENT_DESTINATION', payload: props.destination})
+  //   // loads the modal
+  // }
 
 
   return (
@@ -58,9 +58,6 @@ const DestinationBox = props => {
         <Button size="small" color="primary">
           Add to itinerary
         </Button>
-        {/* <Button size="small" color="primary">
-          Edit
-        </Button> */}
         <EditForm destination={props.destination} />
         <IconButton aria-label="Delete" className={classes.button}>
           <DeleteIcon size="medium" />

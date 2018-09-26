@@ -4,9 +4,29 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import DatePicker from './DatePicker'
+// import DatePicker from './DatePicker'
+import { withStyles } from '@material-ui/core/styles'
+import { editDestination } from '../action'
+import { connect } from 'react-redux'
+
+const styles = {
+  dialog: {
+    color: '#ff0000',
+    // minWidth: '500px',
+    maxWidth: 'lg',
+    // width: '500px'
+  },
+  paperFullWidth: {
+    color: "#ff0000",
+    // border: "1px solid red"
+  },
+  textField: {
+    color: '#ff0000'
+  }
+}
+
 
 class EditForm extends Component {
 
@@ -20,6 +40,17 @@ class EditForm extends Component {
       date: ''
     }
 
+  componentDidMount() {
+    this.setState({
+      title: this.props.destination.title,
+      description: this.props.destination.description,
+      city: this.props.destination.city,
+      state: this.props.destination.state,
+      country: this.props.destination.country,
+      date: this.props.destination.date
+    })
+  }
+
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -28,98 +59,113 @@ class EditForm extends Component {
     this.setState({ open: false });
   };
 
-  // handleTitleInput = event => {
-  //   this.setState({
-  //     title: event.target.value
-  //   })
-  // }
+  handleChange = event => {
+    // console.log('title change')
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.editDestination()
+    this.props.editDestination(this.state, this.props.destination.id)
+    this.setState({ open: false })
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props.destination);
+
+    const { classes } = this.props
+
     return (
 
       (this.props.destination.state) ?
 
       <div>
         <Button color="primary" onClick={this.handleClickOpen}>Edit</Button>
+        <form>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
-        >
-          {/* <DialogTitle id="form-dialog-title">Edit Destination</DialogTitle> */}
-            <DialogContentText>
-                  To edit this destination, please make all necessary changes and then
-                  hit save!
-              </DialogContentText>
+          className={classes.paperFullWidth}
+          fullWidth>
+          <center><DialogTitle id="form-dialog-title">Edit Destination</DialogTitle></center>
           <DialogContent>
           <TextField
-            onChange={this.handleTitleInput}
+            onChange={this.handleChange}
             autoFocus
+            fullWidth
             margin="dense"
             id="name"
             label="Title"
-            value={this.props.destination.title}
+            name="title"
+            value={this.state.title}
             type="text"
-            fullWidth
+            className={classes.textField}
           />
           </DialogContent>
           <DialogContent>
           <TextField
+            onChange={this.handleChange}
             autoFocus
             margin="dense"
             id="name"
             label="Description"
-            value={this.props.destination.description}
+            value={this.state.description}
+            name="description"
             type="text"
             fullWidth
           />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="City"
-              value={this.props.destination.city}
+              value={this.state.city}
+              name="city"
               type="text"
               fullWidth
             />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="State"
-              value={this.props.destination.state}
+              value={this.state.state}
+              name="state"
               type="text"
               fullWidth
             />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="Country"
-              value={this.props.destination.country}
+              value={this.state.country}
+              name="country"
               type="text"
               fullWidth
             />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="Date"
-              value={this.props.destination.date.slice(0, 10)}
+              value={this.state.date.slice(0, 10)}
+              name="date"
               type="text"
               fullWidth
             />
@@ -129,11 +175,12 @@ class EditForm extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleSubmit} color="primary">
               Save
             </Button>
           </DialogActions>
         </Dialog>
+        </form>
       </div>
 
       :
@@ -144,20 +191,17 @@ class EditForm extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
-        >
-          {/* <DialogTitle id="form-dialog-title">Edit Destination</DialogTitle> */}
-            <DialogContentText>
-                  To edit this destination, please make all necessary changes and then
-                  hit save!
-              </DialogContentText>
+          fullWidth>
+          <center><DialogTitle id="form-dialog-title">Edit Destination</DialogTitle></center>
           <DialogContent>
           <TextField
-            onChange={this.handleTitleInput}
+            onChange={this.handleChange}
             autoFocus
             margin="dense"
             id="name"
             label="Title"
-            value={this.props.destination.title}
+            name="title"
+            value={this.state.title}
             type="text"
             fullWidth
           />
@@ -165,43 +209,51 @@ class EditForm extends Component {
           <DialogContent>
           <TextField
             autoFocus
+            onChange={this.handleChange}
             margin="dense"
             id="name"
             label="Description"
-            value={this.props.destination.description}
+            value={this.state.description}
+            name="description"
             type="text"
             fullWidth
           />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="City"
-              value={this.props.destination.city}
+              value={this.state.city}
+              name="city"
               type="text"
               fullWidth
             />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="Country"
-              value={this.props.destination.country}
+              value={this.state.country}
+              name="country"
               type="text"
               fullWidth
             />
           </DialogContent>
           <DialogContent>
             <TextField
+              onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="name"
               label="Date"
-              value={this.props.destination.date.slice(0, 10)}
+              value={this.state.date.slice(0, 10)}
+              name="date"
               type="text"
               fullWidth
             />
@@ -211,7 +263,7 @@ class EditForm extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleSubmit} color="primary">
               Save
             </Button>
           </DialogActions>
@@ -221,10 +273,12 @@ class EditForm extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     editDestination:
-//   }
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    editDestination: (editForm, id) => dispatch(editDestination(editForm, id))
+  }
+}
 
-export default EditForm
+const editFormWithStyle = withStyles(styles)(EditForm)
+
+export default connect(null, mapDispatchToProps)(editFormWithStyle)

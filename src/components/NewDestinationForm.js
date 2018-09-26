@@ -54,7 +54,9 @@ class NewDestinationForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.addDestination(this.state)
-    this.props.history.push('/destinations')
+    // setTimeout(function() {
+      this.props.history.push('/destinations')
+    // }, 2000)
   }
 
   render() {

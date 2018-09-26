@@ -12,7 +12,7 @@ class MapBox extends Component {
       <div>
         <h1>Explore Your World!</h1>
         <center><Map
-          style="mapbox://styles/alangolm/cjmcgzhs344f72rnywkmca93u"
+          style="mapbox://styles/alangolm/cjmcjlgrnimuy2rnsklmo1ldy"
           containerStyle={{
             height: "90vh",
             width: "90vw"

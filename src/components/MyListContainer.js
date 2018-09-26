@@ -23,7 +23,7 @@ class MyListContainer extends Component {
         <Link to="/new_destination"><button value="Add Destination">
           Add Destination
         </button></Link><br /><br />
-        {this.props.destinations.length > 0 ? destinations : null}
+        <center>{this.props.destinations.length > 0 ? destinations : null}</center>
       </div>
     )
   }
@@ -31,7 +31,6 @@ class MyListContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    users: state.users,
     destinations: state.destinations
   }
 }
