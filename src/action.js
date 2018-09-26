@@ -1,11 +1,3 @@
-export function getUsers() {
-  return (dispatch) => {
-    return fetch('http://localhost:3000/api/v1/users')
-    .then(res => res.json())
-    .then(data => dispatch({type: 'GET_USERS', payload: data}))
-  }
-}
-
 export function addDestination(destinationForm) {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/destinations', {
@@ -26,6 +18,44 @@ export function getDestinations() {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/destinations')
     .then(res => res.json())
-    .then(data => dispatch({ type: 'GET_DESTINATIONS', payload: data }, console.log("this is the data from the backend:", data)))
+    .then(data => dispatch({ type: 'GET_DESTINATIONS', payload: data }))
+  }
+}
+
+export function editDestination() {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/destinations', {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+
+      })
+    })
+  }
+}
+
+export function addSubEvent() {
+  return (dispatch) => {
+
+  }
+}
+
+export function editSubEvent() {
+  return (dispatch) => {
+
+  }
+}
+
+export function deleteDestination() {
+  return (dispatch) => {
+
+  }
+}
+
+export function deleteSubEvent() {
+  return (dispatch) => {
+
   }
 }

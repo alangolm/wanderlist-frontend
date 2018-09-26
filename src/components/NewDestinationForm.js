@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addDestination } from '../action'
 import DatePicker from './DatePicker'
-import DestinationBox from './DestinationBox'
 
 class NewDestinationForm extends Component {
 
@@ -46,19 +45,20 @@ class NewDestinationForm extends Component {
     })
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
-    this.props.addDestination(this.state)
-  }
-
   handleStartDate = startDate => {
     this.setState({
       date: startDate._d
     })
   }
 
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.addDestination(this.state)
+    this.props.history.push('/destinations')
+  }
+
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="ui form">
         <h1>Add To Your Destinations!</h1>
@@ -165,7 +165,7 @@ class NewDestinationForm extends Component {
           <option value="Guyana">Guyana</option>
           <option value="Haiti">Haiti</option>
           <option value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
-          <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+          <option value="Vatican City">Vatican City</option>
           <option value="Honduras">Honduras</option>
           <option value="Hong Kong">Hong Kong</option>
           <option value="Hungary">Hungary</option>
@@ -186,7 +186,7 @@ class NewDestinationForm extends Component {
           <option value="Kenya">Kenya</option>
           <option value="Kiribati">Kiribati</option>
           <option value="Democratic People's Republic of Korea">Democratic People's Republic of Korea</option>
-          <option value="Republic of Korea">Republic of Korea</option>
+          <option value="South Korea">South Korea</option>
           <option value="Kuwait">Kuwait</option>
           <option value="Kyrgyzstan">Kyrgyzstan</option>
           <option value="Laos">Laos</option>
@@ -199,7 +199,7 @@ class NewDestinationForm extends Component {
           <option value="Lithuania">Lithuania</option>
           <option value="Luxembourg">Luxembourg</option>
           <option value="Macao">Macao</option>
-          <option value="The Former Yugoslav Republic of Macedonia">The Former Yugoslav Republic of Macedonia</option>
+          <option value="Macedonia">Macedonia</option>
           <option value="Madagascar">Madagascar</option>
           <option value="Malawi">Malawi</option>
           <option value="Malaysia">Malaysia</option>
@@ -303,7 +303,7 @@ class NewDestinationForm extends Component {
           <option value="Ukraine">Ukraine</option>
           <option value="United Arab Emirates">United Arab Emirates</option>
           <option value="United Kingdom">United Kingdom</option>
-          <option value="United States">United States</option>
+          <option value="United States of America">United States of America</option>
           <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
           <option value="Uruguay">Uruguay</option>
           <option value="Uzbekistan">Uzbekistan</option>
@@ -316,9 +316,9 @@ class NewDestinationForm extends Component {
           <option value="Western Sahara">Western Sahara</option>
           <option value="Yemen">Yemen</option>
           <option value="Zambia">Zambia</option>
-          <option value="Zimbabwe">Zimbabwe</option><input type="text" placeholder="Select Country" /></select></div><br />
+          <option value="Zimbabwe">Zimbabwe</option><input type="text" placeholder="Select Country" /></select></div>
           <DatePicker handleStartDate={this.handleStartDate} />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit"></input>
         </form>
       </div>
     )

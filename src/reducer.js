@@ -1,6 +1,7 @@
 const initialState = {
-  users: [],
-  destinations: []
+  // users: [],
+  destinations: [],
+  selectedDestination: null
 }
 
 

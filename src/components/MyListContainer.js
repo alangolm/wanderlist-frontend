@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import DestinationBox from './DestinationBox'
-import NewDestinationForm from './NewDestinationForm'
+// import NewDestinationForm from './NewDestinationForm'
 import { connect } from 'react-redux'
 import { getDestinations } from '../action'
+import { Link } from 'react-router-dom'
 
 class MyListContainer extends Component {
 
@@ -19,9 +20,9 @@ class MyListContainer extends Component {
     return (
       <div>
         <h1>Destinations/Events:</h1>
-        <button value="Add Destination">
+        <Link to="/new_destination"><button value="Add Destination">
           Add Destination
-        </button><br /><br />
+        </button></Link><br /><br />
         {this.props.destinations.length > 0 ? destinations : null}
       </div>
     )
