@@ -11,8 +11,7 @@ class NewDestinationForm extends Component {
     city: '',
     state: '',
     country: '',
-    date: '',
-    endDate: ''
+    date: ''
   }
 
   handleTitleInput = event => {
@@ -201,7 +200,7 @@ class NewDestinationForm extends Component {
           <option value="Lithuania">Lithuania</option>
           <option value="Luxembourg">Luxembourg</option>
           <option value="Macao">Macao</option>
-          <option value="Macedonia">Macedonia</option>
+          <option value="Republic of Macedonia">Republic of Macedonia</option>
           <option value="Madagascar">Madagascar</option>
           <option value="Malawi">Malawi</option>
           <option value="Malaysia">Malaysia</option>

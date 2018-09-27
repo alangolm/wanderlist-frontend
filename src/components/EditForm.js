@@ -56,11 +56,10 @@ class EditForm extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
-  };
+    this.setState({ open: false })
+  }
 
   handleChange = event => {
-    // console.log('title change')
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -73,7 +72,7 @@ class EditForm extends Component {
   }
 
   render() {
-    console.log(this.props.destination);
+    // console.log(this.props.destination);
 
     const { classes } = this.props
 
@@ -90,7 +89,7 @@ class EditForm extends Component {
           aria-labelledby="form-dialog-title"
           className={classes.paperFullWidth}
           fullWidth>
-          <center><DialogTitle id="form-dialog-title">Edit Destination</DialogTitle></center>
+          <DialogTitle id="form-dialog-title">Edit Destination</DialogTitle>
           <DialogContent>
           <TextField
             onChange={this.handleChange}
@@ -170,7 +169,6 @@ class EditForm extends Component {
               fullWidth
             />
           </DialogContent>
-          {/* <DatePicker /> */}
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
@@ -258,7 +256,6 @@ class EditForm extends Component {
               fullWidth
             />
           </DialogContent>
-          {/* <DatePicker /> */}
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel

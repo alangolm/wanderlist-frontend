@@ -46,9 +46,19 @@ export function editDestination(editForm, id) {
   }
 }
 
-export function addSubEvent() {
+export function addSubEvent(subEvent, id) {
   return (dispatch) => {
-
+    fetch('http://localhost:3000/api/v1/events', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        event: { ...subEvent, destination_id: id }
+      })
+    })
+    .then(res => res.json())
+    .then(json => dispatch({ type: 'ADD_SUB_EVENT', payload: json }))
   }
 }
 

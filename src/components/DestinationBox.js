@@ -6,11 +6,12 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import EditForm from './EditForm'
+import AddToItineraryForm from './AddToItineraryForm'
 
 const styles = {
   card: {
@@ -24,10 +25,11 @@ const styles = {
 const DestinationBox = props => {
   const { classes } = props
 
-  // const handleEditClick = () => {
-  //   props.dipatch({type: 'SET_CURRENT_DESTINATION', payload: props.destination})
-  //   // loads the modal
-  // }
+console.log(props);
+
+  const subEvents = props.destination.events.map(event => {
+    return <Typography key={event.id} component="p">{event.description}, {event.date}</Typography>
+  })
 
 
   return (
@@ -50,14 +52,13 @@ const DestinationBox = props => {
                {props.destination.city}, {props.destination.country}
              </Typography> }
           <Typography component="p">
-            {props.destination.date.slice(0, 10)}
+            {props.destination.date.slice(0, 10).replace(/-/g, '/')}
           </Typography>
+          {subEvents}
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Add to itinerary
-        </Button>
+        <AddToItineraryForm destination={props.destination} />
         <EditForm destination={props.destination} />
         <IconButton aria-label="Delete" className={classes.button}>
           <DeleteIcon size="medium" />
@@ -67,10 +68,10 @@ const DestinationBox = props => {
   )
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     destinations: state.destinations
-//   }
-// }
+function mapStateToProps(state) {
+  return {
+    destinations: state.destinations.events
+  }
+}
 
 export default withStyles(styles)(DestinationBox)

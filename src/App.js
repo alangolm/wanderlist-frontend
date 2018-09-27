@@ -23,16 +23,4 @@ class App extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     users: state.users
-//   }
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     getUsers: () => dispatch(getUsers())
-//   }
-// }
-
 export default withRouter(connect()(App));
