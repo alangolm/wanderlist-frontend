@@ -25,12 +25,17 @@ const styles = {
 const DestinationBox = props => {
   const { classes } = props
 
-console.log(props);
+// console.log(props);
 
   const subEvents = props.destination.events.map(event => {
-    return <Typography key={event.id} component="p">{event.description}, {event.date}</Typography>
+    let subDateArray = event.date.slice(0, 10).replace(/-/g, '/').split('/')
+    let newSubDate = (subDateArray[1] + '/' + subDateArray[2] + '/' + subDateArray[0]).toString()
+    return <Typography key={event.id} component="p">{event.description} {newSubDate}</Typography>
   })
 
+  let dateArray = props.destination.date.slice(0, 10).replace(/-/g, '/').split('/')
+  // console.log(dateArray);
+  let newDate = (dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0]).toString()
 
   return (
     <Card className={classes.card}>
@@ -52,7 +57,7 @@ console.log(props);
                {props.destination.city}, {props.destination.country}
              </Typography> }
           <Typography component="p">
-            {props.destination.date.slice(0, 10).replace(/-/g, '/')}
+            {newDate}
           </Typography>
           {subEvents}
         </CardContent>

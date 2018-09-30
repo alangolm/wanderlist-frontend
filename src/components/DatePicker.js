@@ -23,6 +23,7 @@ export default class Example extends Component {
 
   render() {
     return <DatePicker
+        dateFormat="MM/DD/YYYY"
         selected={this.state.startDate}
         onChange={this.handleChange}
     />;
