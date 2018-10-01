@@ -1,55 +1,33 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 
-const Nav = ({ location: { pathname } }) => {
-  return (
-    <Menu className="ui secondary pointing menu">
-      <Fragment>
-        <Menu.Item as={NavLink} to="/destinations" name="My List" active={pathname === '/destinations'} />
-        <Menu.Item as={NavLink} to="/my_world" name="My World" active={pathname === '/my_world'} />
-        <Menu.Item as={NavLink} to="/new_destination" name="Add Destination" active={pathname === '/new_destination'} />
-      </Fragment>
-    </Menu>
-  )
-}
+class Nav extends Component {
 
-// import React, { Component } from 'react'
-// import { Menu } from 'semantic-ui-react'
-//
-// export default class MenuExampleSecondaryPointing extends Component {
-//   state = { activeItem: 'home' }
-//
-//   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-//
-//   render() {
-//     const { activeItem } = this.state
-//
-//     return (
-//       <div>
-//         <Menu pointing secondary>
-//           <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-//           <Menu.Item
-//             name='messages'
-//             active={activeItem === 'messages'}
-//             onClick={this.handleItemClick}
-//           />
-//           <Menu.Item
-//             name='friends'
-//             active={activeItem === 'friends'}
-//             onClick={this.handleItemClick}
-//           />
-//           <Menu.Menu position='right'>
-//             <Menu.Item
-//               name='logout'
-//               active={activeItem === 'logout'}
-//               onClick={this.handleItemClick}
-//             />
-//           </Menu.Menu>
-//         </Menu>
-//       </div>
-//     )
-//   }
-// }
+  render() {
+    return (
+      <Fragment>
+        <Menu className="ui secondary pointing menu">
+          <Menu.Item
+            as={NavLink}
+            to="/destinations"
+            name="My List"
+          />
+          <Menu.Item
+            as={NavLink}
+            name='My World'
+            to="/my_world"
+          />
+          <Menu.Item
+            // position='center'
+            name='Add Destination'
+            as={NavLink}
+            to="/new_destination"
+          />
+        </Menu>
+      </Fragment>
+    )
+  }
+}
 
 export default withRouter(Nav)

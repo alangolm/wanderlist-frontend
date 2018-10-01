@@ -62,6 +62,10 @@ export function addSubEvent(subEvent, id) {
   }
 }
 
+// export default addCoordinates(points) {
+//
+// }
+
 export function editSubEvent() {
   return (dispatch) => {
 

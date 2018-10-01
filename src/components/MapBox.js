@@ -38,9 +38,10 @@
 
 import React from "react";
 import Icon from "../map-marker-icon.png";
-import ReactMapboxGl, { Layer, Feature, ZoomControl } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-const style = "mapbox://styles/alangolm/cjmcjlgrnimuy2rnsklmo1ldy"
 const accessToken = "pk.eyJ1IjoiYWxhbmdvbG0iLCJhIjoiY2ptYzhwcGo2MHQwNDNsbnliazE3anV4biJ9.mf9bzfRephQrIhj64MRZ0g"
 
 const Map = ReactMapboxGl({
@@ -51,11 +52,11 @@ class MapBox extends React.Component {
 
   state = {
     points: [
-      [-87.6309729, 41.76716449],
-      [-87.63097366, 41.76668286],
-      [-87.63095643, 41.76619789],
-      [-87.63095245, 41.76578],
-      [-87.63094033, 41.76561825]
+    //   [-87.6309729, 41.76716449],
+    //   [-87.63097366, 41.76668286],
+    //   [-87.63095643, 41.76619789],
+    //   [-87.63095245, 41.76578],
+    //   [-87.63094033, 41.76561825]
     ],
     zoom: [15],
     center: [-74.013859, 40.705197]
@@ -79,11 +80,18 @@ class MapBox extends React.Component {
     return (
       <div>
       <h1>Explore Your World!</h1>
+      <Link
+        // position="right"
+        to="/new_destination"><button
+        value="Add Destination">
+        Add Destination
+        </button>
+      </Link><br /><br />
       <center><Map
-        style={style}
+        style="mapbox://styles/alangolm/cjmcjlgrnimuy2rnsklmo1ldy"
         zoom={zoom}
         center={center}
-        containerStyle={{ height: '90vh', width: '90vw' }}
+        containerStyle={{ height: '90vh', width: '95vw' }}
         // onClick={this.handleClick}
       >
         <Layer
@@ -100,4 +108,10 @@ class MapBox extends React.Component {
   }
 }
 
-export default MapBox
+function mapDispatchToProps(dispatch) {
+  return {
+
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MapBox)

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addDestination } from '../action'
 import DatePicker from './DatePicker'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import cityCoordinates from '../cityCoordinates'
 
 class NewDestinationForm extends Component {
 
@@ -29,7 +30,7 @@ class NewDestinationForm extends Component {
 
   handleCityInput = event => {
     this.setState({
-      city: event.target.value
+      city: cityCoordinates[event.target.value]
     })
   }
 
@@ -125,6 +126,8 @@ class NewDestinationForm extends Component {
             <option value="Dubia">Dubia</option>
             <option value="Tokyo">Tokyo</option>
             <option value="South Korea">South Korea</option>
+            <option value="Toronto">Toronto</option>
+            <option value="Santorini">Santorini</option>
             <input type="text" placeholder="Select City" /></select></div>
           <input type="text" placeholder="State" onChange={this.handleStateInput} /><br />
           <div className="field"><select onChange={this.handleCountryInput} className="ui search dropdown"><option value="">Select Country</option>
@@ -210,3 +213,40 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(NewDestinationForm)
+
+
+// import React from 'react'
+// import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+//
+// const NewDestinationForm = () => (
+//   <Form>
+//     <Form.Group widths='equal'>
+//       <Form.Field
+//         id='form-input-control-first-name'
+//         control={Input}
+//         label='First name'
+//         placeholder='First name'
+//       />
+//       <Form.Field
+//         id='form-input-control-last-name'
+//         control={Input}
+//         label='Last name'
+//         placeholder='Last name'
+//       />
+//     </Form.Group>
+//     <Form.Field
+//       id='form-textarea-control-opinion'
+//       control={TextArea}
+//       label='Opinion'
+//       placeholder='Opinion'
+//     />
+//     <Form.Field
+//       id='form-button-control-public'
+//       control={Button}
+//       content='Confirm'
+//       label='Label with htmlFor'
+//     />
+//   </Form>
+// )
+//
+// export default NewDestinationForm
