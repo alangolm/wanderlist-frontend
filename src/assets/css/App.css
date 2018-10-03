@@ -34,9 +34,9 @@
 .add-dest-button-map {
   border: 1px solid !important;
   background: #ffffff !important;
-  /* color: #fff; */
   float: right;
-  margin-right: 36px !important;
+  /* styling for when showing app full screen on monitor */
+  margin-right: 50px !important;
 }
 
 .add-dest-button-list {
@@ -60,20 +60,35 @@
 .my-list-header {
   font-weight: normal;
   font-family: "Courier New";
+  padding-top: 10px;
   padding-left: 15px;
 }
 
 .new-dest-header {
   font-weight: normal;
   font-family: "Courier New";
+  padding-top: 10px;
   padding-left: 15px;
 }
 
 .nav-bar-header {
-  padding-top: 40px;
+  padding-top: 18px;
+  font-family: "Courier New";
 }
 
 .app-logo {
-  padding-top: 5px;
+  padding-top: 7px;
   padding-left: 8px;
+}
+
+.my-list-tab {
+  font-family: "Courier New";
+}
+
+.my-world-tab {
+  font-family: "Courier New";
+}
+
+.new-dest-tab {
+  font-family: "Courier New";
 }

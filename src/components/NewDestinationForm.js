@@ -7,8 +7,6 @@ import cityCoordinates from '../cityCoordinates'
 
 class NewDestinationForm extends Component {
 
-  // console.log(cityCoordinates);
-
   state = {
     title: '',
     description: '',
@@ -32,23 +30,15 @@ class NewDestinationForm extends Component {
   }
 
   handleCityInput = event => {
-    console.log(this.state.city);
-    console.log(this.state.coordinates);
     this.setState({
       city: event.target.value,
       coordinates: cityCoordinates[event.target.value]
-    }, () => console.log(this.state.coordinates))
+    })
   }
-
-  // handleCoordinatesInput = event => {
-  //   this.setState({
-  //     coordinates: cityCoordinates[event.target.value.toString()]
-  //   })
-  // }
 
   handleStateInput = event => {
     this.setState({
-      state: event.target.value
+      state: event.target.value.toString()
     })
   }
 
@@ -72,49 +62,11 @@ class NewDestinationForm extends Component {
   }
 
   render() {
-    console.log(this.state.city);
     return (
-  // <Form onSubmit={this.handleSubmit}>
-  //   <Form.Group widths='equal'>
-  //     <Form.Field
-  //       onChange={this.handleTitleInput}
-  //       id='form-input-control-first-name'
-  //       control={Input}
-  //       label='Title'
-  //       placeholder='Title'
-  //     />
-  //     <Form.Field
-  //       id='form-input-control-last-name'
-  //       control={Input}
-  //       label='Last name'
-  //       placeholder='Last name'
-  //     />
-  //   </Form.Group>
-  //   <Form.Field
-  //     onChange={this.handleDescriptionInput}
-  //     id='form-textarea-control-opinion'
-  //     control={TextArea}
-  //     label='Description'
-  //     placeholder='Description'
-  //   />
-  //   <Form.Field
-  //     id='form-button-control-public'
-  //     control={Button}
-  //     content='Submit'
-  //   />
-  // </Form>
-
-
-
-
-
-
-      <div className="ui form" width="100px">
+      <div className="ui form" widths="equal">
         <h1 className="new-dest-header">Add To Your Destinations!</h1>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Title" onChange={this.handleTitleInput} /><br />
-          <textarea type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br /><br />
-          <div className="field"><select onChange={this.handleCityInput} className="ui search dropdown"><option value="">Select City</option>
+          <div className="field"><select style={{width: '25%'}} onChange={this.handleCityInput} className="ui search dropdown"><option value="">Select City</option>
             {/* <option value="New York">New York</option> */}
             <option value="Paris">Paris</option>
             <option value="Miami">Miami</option>
@@ -146,8 +98,65 @@ class NewDestinationForm extends Component {
             <option value="Shanghai">Shanghai</option>
             <option value="Reykjavik">Reykjavik</option>
             <input type="text" placeholder="Select City" /></select></div>
-          <input type="text" placeholder="State" onChange={this.handleStateInput} /><br />
-          <div className="field"><select onChange={this.handleCountryInput} className="ui search dropdown"><option value="">Select Country</option>
+          <input style={{width: '25%'}} type="text" placeholder="Title" onChange={this.handleTitleInput} /><br /><br />
+          <textarea style={{width: '40%'}} type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br /><br />
+
+          {/* <input style={{width: '25%'}} type="text" placeholder="State" onChange={this.handleStateInput} /><br /><br /> */}
+          <div className="field"><select style={{width: '25%'}} onChange={this.handleCityInput} className="ui search dropdown"><option value="">Select State</option>
+            <option value="Alabama">Alabama</option>
+          	<option value="Alaska">Alaska</option>
+          	<option value="Arizona">Arizona</option>
+          	<option value="Arkansas">Arkansas</option>
+          	<option value="California">California</option>
+          	<option value="Colorado">Colorado</option>
+          	<option value="Connecticut">Connecticut</option>
+          	<option value="Delaware">Delaware</option>
+          	<option value="District Of Columbia">District Of Columbia</option>
+          	<option value="Florida">Florida</option>
+          	<option value="Georgia">Georgia</option>
+          	<option value="Hawaii">Hawaii</option>
+          	<option value="Idaho">Idaho</option>
+          	<option value="Illinois">Illinois</option>
+          	<option value="Indiana">Indiana</option>
+          	<option value="Iowa">Iowa</option>
+          	<option value="Kansas">Kansas</option>
+          	<option value="Kentucky">Kentucky</option>
+          	<option value="Louisiana">Louisiana</option>
+          	<option value="Maine">Maine</option>
+          	<option value="Maryland">Maryland</option>
+          	<option value="Massachusetts">Massachusetts</option>
+          	<option value="Michigan">Michigan</option>
+          	<option value="Minnesota">Minnesota</option>
+          	<option value="Mississippi">Mississippi</option>
+          	<option value="Missouri">Missouri</option>
+          	<option value="Montana">Montana</option>
+          	<option value="Nebraska">Nebraska</option>
+          	<option value="Nevada">Nevada</option>
+          	<option value="New Hampshire">New Hampshire</option>
+          	<option value="New Jersey">New Jersey</option>
+          	<option value="New Mexico">New Mexico</option>
+          	<option value="New York">New York</option>
+          	<option value="North Carolina">North Carolina</option>
+          	<option value="North Dakota">North Dakota</option>
+          	<option value="Ohio">Ohio</option>
+          	<option value="Oklahoma">Oklahoma</option>
+          	<option value="Oregon">Oregon</option>
+          	<option value="Pennsylvania">Pennsylvania</option>
+          	<option value="Rhode Island">Rhode Island</option>
+          	<option value="South Carolina">South Carolina</option>
+          	<option value="South Dakota">South Dakota</option>
+          	<option value="Tennessee">Tennessee</option>
+          	<option value="Texas">Texas</option>
+          	<option value="Utah">Utah</option>
+          	<option value="Vermont">Vermont</option>
+          	<option value="Virginia">Virginia</option>
+          	<option value="Washington">Washington</option>
+          	<option value="West Virginia">West Virginia</option>
+          	<option value="Wisconsin">Wisconsin</option>
+          	<option value="Wyoming">Wyoming</option>
+            <input type="text" placeholder="Select State" /></select>
+          </div>
+          <div className="field"><select style={{width: '25%'}} onChange={this.handleCountryInput} className="ui search dropdown"><option value="">Select Country</option>
             <option value="Argentina">Argentina</option>
             <option value="Australia">Australia</option>
             <option value="Austria">Austria</option>
@@ -234,42 +243,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(NewDestinationForm)
-
-// return {type: "ADD_COORDINATES", payload: []}
-
-
-// import React from 'react'
-// import { Form, Input, TextArea, Button } from 'semantic-ui-react'
-//
-// const NewDestinationForm = () => (
-//   <Form>
-//     <Form.Group widths='equal'>
-//       <Form.Field
-//         id='form-input-control-first-name'
-//         control={Input}
-//         label='First name'
-//         placeholder='First name'
-//       />
-//       <Form.Field
-//         id='form-input-control-last-name'
-//         control={Input}
-//         label='Last name'
-//         placeholder='Last name'
-//       />
-//     </Form.Group>
-//     <Form.Field
-//       id='form-textarea-control-opinion'
-//       control={TextArea}
-//       label='Opinion'
-//       placeholder='Opinion'
-//     />
-//     <Form.Field
-//       id='form-button-control-public'
-//       control={Button}
-//       content='Confirm'
-//       label='Label with htmlFor'
-//     />
-//   </Form>
-// )
-//
-// export default NewDestinationForm

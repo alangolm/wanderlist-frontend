@@ -12,15 +12,34 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import EditForm from './EditForm'
 import AddToItineraryForm from './AddToItineraryForm'
+import Grid from '@material-ui/core/Grid';
 
-const styles = {
+const styles = theme => ({
   card: {
-    maxWidth: 500,
+    // maxWidth: 500,
+    height: 230
   },
   title: {
     fontSize: 35,
+  },
+  root: {
+    flexGrow: 1,
+    maxWidth: 300,
+    height: 400,
+    padding: theme.spacing.unit * 2,
+    marginTop: 20,
+    wordWrap: 'break-word',
+    whiteSpace: 'normal',
+  },
+  item: {
+    // height: 500
+  },
+  action: {
+    position: 'relative',
+    bottom: 0,
+    left: 0
   }
-};
+});
 
 const DestinationBox = props => {
   const { classes } = props
@@ -35,38 +54,40 @@ const DestinationBox = props => {
   let newDate = (dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0]).toString()
 
   return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom className={classes.title} variant="headline" component="h2">
-            {props.destination.title}
-          </Typography>
-          <Typography component="p">
-            {props.destination.description}
-          </Typography><br />
-          {(props.destination.state)
-            ?
-            <Typography component="p">
-              {props.destination.city}, {props.destination.state}, {props.destination.country}
+    <Grid item xs={4} className={classes.item}>
+      <Card className={classes.card}>
+        {/* <CardActionArea> */}
+          <CardContent>
+            <Typography gutterBottom className={classes.title} variant="headline" component="h2">
+              {props.destination.title}
             </Typography>
-             :
-             <Typography component="p">
-               {props.destination.city}, {props.destination.country}
-             </Typography> }
-          <Typography component="p">
-            {newDate}
-          </Typography>
-          {subEvents}
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <AddToItineraryForm destination={props.destination} />
-        <EditForm destination={props.destination} />
-        {/* <IconButton aria-label="Delete" className={classes.button}>
-          <DeleteIcon size="medium" />
-        </IconButton> */}
-      </CardActions>
-    </Card>
+            <Typography component="p">
+              {props.destination.description}
+            </Typography><br />
+            {(props.destination.state)
+              ?
+              <Typography component="p">
+                {props.destination.city}, {props.destination.state}, {props.destination.country}
+              </Typography>
+              :
+              <Typography component="p">
+                {props.destination.city}, {props.destination.country}
+              </Typography> }
+              <Typography component="p">
+                {newDate}
+              </Typography>
+              {subEvents}
+            </CardContent>
+          {/* </CardActionArea> */}
+          <CardActions>
+            <AddToItineraryForm destination={props.destination} />
+            <EditForm destination={props.destination} />
+            {/* <IconButton aria-label="Delete" className={classes.button}>
+            <DeleteIcon size="medium" />
+          </IconButton> */}
+        </CardActions>
+      </Card>
+    </Grid>
   )
 }
 
