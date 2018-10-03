@@ -25,8 +25,6 @@ const styles = {
 const DestinationBox = props => {
   const { classes } = props
 
-// console.log(props);
-
   const subEvents = props.destination.events.map(event => {
     let subDateArray = event.date.slice(0, 10).replace(/-/g, '/').split('/')
     let newSubDate = (subDateArray[1] + '/' + subDateArray[2] + '/' + subDateArray[0]).toString()
@@ -34,7 +32,6 @@ const DestinationBox = props => {
   })
 
   let dateArray = props.destination.date.slice(0, 10).replace(/-/g, '/').split('/')
-  // console.log(dateArray);
   let newDate = (dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0]).toString()
 
   return (
@@ -65,9 +62,9 @@ const DestinationBox = props => {
       <CardActions>
         <AddToItineraryForm destination={props.destination} />
         <EditForm destination={props.destination} />
-        <IconButton aria-label="Delete" className={classes.button}>
+        {/* <IconButton aria-label="Delete" className={classes.button}>
           <DeleteIcon size="medium" />
-        </IconButton>
+        </IconButton> */}
       </CardActions>
     </Card>
   )

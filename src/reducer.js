@@ -9,7 +9,9 @@ export default function reducer(state = initialState, action) {
     case 'GET_DESTINATIONS':
       return {...state, destinations: action.payload}
     case 'ADD_DESTINATION':
-      return {...state, destinations: [...state.destinations, action.payload], coordinates: [...state.coordinates, action.payload]}
+      return {...state, destinations: [...state.destinations, action.payload]}
+    case 'ADD_COORDINATES':
+        return {...state, coordinates: [...state.coordinates, action.payload]}
     case 'EDIT_DESTINATION':
       // here I am finding the destination that I want to edit by its ID and checking if the ID of the destination from the backend matches the ID of the destination that we click on
       const updatedDestination = state.destinations.find(destination => {

@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addDestination } from '../action'
+import { addDestination, addCoordinates } from '../action'
 import DatePicker from './DatePicker'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 import cityCoordinates from '../cityCoordinates'
 
 class NewDestinationForm extends Component {
 
+  // console.log(cityCoordinates);
+
   state = {
     title: '',
     description: '',
     city: '',
+    coordinates: [],
     state: '',
     country: '',
     date: ''
@@ -29,10 +32,19 @@ class NewDestinationForm extends Component {
   }
 
   handleCityInput = event => {
+    console.log(this.state.city);
+    console.log(this.state.coordinates);
     this.setState({
-      city: cityCoordinates[event.target.value]
-    })
+      city: event.target.value,
+      coordinates: cityCoordinates[event.target.value]
+    }, () => console.log(this.state.coordinates))
   }
+
+  // handleCoordinatesInput = event => {
+  //   this.setState({
+  //     coordinates: cityCoordinates[event.target.value.toString()]
+  //   })
+  // }
 
   handleStateInput = event => {
     this.setState({
@@ -55,13 +67,12 @@ class NewDestinationForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.addDestination(this.state)
-    // setTimeout(function() {
-      this.props.history.push('/destinations')
-    // }, 2000)
+    this.props.addCoordinates(this.state.coordinates)
+    this.props.history.push('/destinations')
   }
 
   render() {
-    // console.log(this.state);
+    console.log(this.state.city);
     return (
   // <Form onSubmit={this.handleSubmit}>
   //   <Form.Group widths='equal'>
@@ -98,36 +109,42 @@ class NewDestinationForm extends Component {
 
 
 
-      <div className="ui form">
-        <h1>Add To Your Destinations!</h1>
+      <div className="ui form" width="100px">
+        <h1 className="new-dest-header">Add To Your Destinations!</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Title" onChange={this.handleTitleInput} /><br />
-          <textarea type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br />
+          <textarea type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br /><br />
           <div className="field"><select onChange={this.handleCityInput} className="ui search dropdown"><option value="">Select City</option>
-            <option value="New York">New York</option>
+            {/* <option value="New York">New York</option> */}
             <option value="Paris">Paris</option>
             <option value="Miami">Miami</option>
-            <option value="Washington, D.C.">Washington, D.C.</option>
+            {/* <option value="Washington, D.C.">Washington, D.C.</option> */}
             <option value="Chicago">Chicago</option>
             <option value="Boston">Boston</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="San Francisco">San Francisco</option>
-            <option value="New Orleans">New Orleans</option>
+            {/* <option value="Los Angeles">Los Angeles</option> */}
+            {/* <option value="San Francisco">San Francisco</option> */}
+            {/* <option value="New Orleans">New Orleans</option> */}
             <option value="London">London</option>
             <option value="Madrid">Madrid</option>
             <option value="Barcelona">Barcelona</option>
             <option value="Berlin">Berlin</option>
             <option value="Munich">Munich</option>
+            <option value="Melbourne">Melbourne</option>
             <option value="Bangkok">Bangkok</option>
             <option value="Hong Kong">Hong Kong</option>
             <option value="Rome">Rome</option>
-            <option value="Tel Aviv">Tel Aviv</option>
+            {/* <option value="Tel Aviv">Tel Aviv</option> */}
             <option value="Cairo">Cairo</option>
             <option value="Dubia">Dubia</option>
             <option value="Tokyo">Tokyo</option>
-            <option value="South Korea">South Korea</option>
+            {/* <option value="South Korea">South Korea</option> */}
             <option value="Toronto">Toronto</option>
             <option value="Santorini">Santorini</option>
+            <option value="Sydney">Sydney</option>
+            <option value="Moscow">Moscow</option>
+            <option value="Beijing">Beijing</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Reykjavik">Reykjavik</option>
             <input type="text" placeholder="Select City" /></select></div>
           <input type="text" placeholder="State" onChange={this.handleStateInput} /><br />
           <div className="field"><select onChange={this.handleCountryInput} className="ui search dropdown"><option value="">Select Country</option>
@@ -198,8 +215,11 @@ class NewDestinationForm extends Component {
             <option value="Vietnam">Vietnam</option>
             <input type="text" placeholder="Select Country" /></select>
         </div>
-          <DatePicker handleStartDate={this.handleStartDate} />
-          <input type="submit" value="Submit"></input>
+          <DatePicker handleStartDate={this.handleStartDate} /><br />
+          {/* <input type="submit" value="Submit"></input> */}
+          <Button type="submit">
+            Submit
+          </Button>
         </form>
       </div>
     )
@@ -208,11 +228,14 @@ class NewDestinationForm extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addDestination: (destinationForm) => dispatch(addDestination(destinationForm))
+    addDestination: (destinationForm) => dispatch(addDestination(destinationForm)),
+    addCoordinates: (points) => dispatch(addCoordinates(points))
   }
 }
 
 export default connect(null, mapDispatchToProps)(NewDestinationForm)
+
+// return {type: "ADD_COORDINATES", payload: []}
 
 
 // import React from 'react'

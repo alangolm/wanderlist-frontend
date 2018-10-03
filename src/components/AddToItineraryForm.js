@@ -39,7 +39,7 @@ class AddToItineraryForm extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.handleClickOpen}>Add To Itinerary</Button>
+        <Button className="add-to-itinerary" color="primary" onClick={this.handleClickOpen}>Add To Itinerary</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

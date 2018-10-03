@@ -26,3 +26,54 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.ui-form {
+  width: 100px;
+}
+
+.add-dest-button-map {
+  border: 1px solid !important;
+  background: #ffffff !important;
+  /* color: #fff; */
+  float: right;
+  margin-right: 36px !important;
+}
+
+.add-dest-button-list {
+  border: 1px solid !important;
+  background: #ffffff !important;
+  /* padding-bottom: 10px !important; */
+  float: right;
+  margin-right: 36px !important;
+}
+
+.add-to-itinerary {
+  float: center;
+}
+
+.explore-page-header {
+  padding-top: 20px;
+  font-weight: normal;
+  font-family: "Courier New";
+}
+
+.my-list-header {
+  font-weight: normal;
+  font-family: "Courier New";
+  padding-left: 15px;
+}
+
+.new-dest-header {
+  font-weight: normal;
+  font-family: "Courier New";
+  padding-left: 15px;
+}
+
+.nav-bar-header {
+  padding-top: 40px;
+}
+
+.app-logo {
+  padding-top: 5px;
+  padding-left: 8px;
+}

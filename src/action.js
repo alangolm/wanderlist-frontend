@@ -62,24 +62,26 @@ export function addSubEvent(subEvent, id) {
   }
 }
 
-// export default addCoordinates(points) {
+export function addCoordinates(points) {
+  return (dispatch) => {
+    dispatch({ type: 'ADD_COORDINATES', payload: points })
+  }
+}
+
+// export function editSubEvent() {
+//   return (dispatch) => {
 //
+//   }
 // }
-
-export function editSubEvent() {
-  return (dispatch) => {
-
-  }
-}
-
-export function deleteDestination() {
-  return (dispatch) => {
-
-  }
-}
-
-export function deleteSubEvent() {
-  return (dispatch) => {
-
-  }
-}
+//
+// export function deleteDestination() {
+//   return (dispatch) => {
+//
+//   }
+// }
+//
+// export function deleteSubEvent() {
+//   return (dispatch) => {
+//
+//   }
+// }

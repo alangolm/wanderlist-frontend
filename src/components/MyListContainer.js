@@ -4,8 +4,13 @@ import DestinationBox from './DestinationBox'
 import { connect } from 'react-redux'
 import { getDestinations } from '../action'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 class MyListContainer extends Component {
+
+  // buttonStyle = {
+  //   right: '100%'
+  // }
 
   componentDidMount() {
     this.props.getDestinations()
@@ -19,10 +24,8 @@ class MyListContainer extends Component {
 
     return (
       <div>
-        <h1>Destinations/Events:</h1>
-        <Link to="/new_destination"><button value="Add Destination">
-          Add Destination
-        </button></Link><br /><br />
+        <h1 className="my-list-header">Destinations/Events:</h1>
+        <Link to="/new_destination"><Button className="add-dest-button-list">Add Destination</Button></Link><br /><br /><br />
         <center>{this.props.destinations.length > 0 ? destinations : null}</center>
       </div>
     )
