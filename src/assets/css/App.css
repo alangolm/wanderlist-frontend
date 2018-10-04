@@ -47,6 +47,13 @@
   margin-right: 36px !important;
 }
 
+.submit-new-dest-button {
+  border: 1px solid !important;
+  background: #ffffff !important;
+  /* padding-bottom: 10px !important; */
+  margin-right: 36px !important;
+}
+
 .add-to-itinerary {
   float: center;
 }

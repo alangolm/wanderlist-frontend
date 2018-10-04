@@ -61,9 +61,37 @@ class NewDestinationForm extends Component {
     this.props.history.push('/destinations')
   }
 
+  cityOptions = [
+    { text: 'Barcelona', value: 'Barcelona' },
+    { text: 'Madrid', value: 'Madrid' },
+
+  ]
+
   render() {
     return (
-      <div className="ui form" widths="equal">
+
+      // <div>
+      // <Form>
+      //   <Form.Group widths="equal">
+      //     <Form.Field
+      //       label='City'
+      //       options={this.cityOptions}
+      //       placeholder='City'
+      //       control={Input}
+      //     />
+      //   </Form.Group>
+      // </Form>
+
+
+
+
+
+
+
+
+
+
+      <center><div className="ui form" widths="equal">
         <h1 className="new-dest-header">Add To Your Destinations!</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="field"><select style={{width: '25%'}} onChange={this.handleCityInput} className="ui search dropdown"><option value="">Select City</option>
@@ -83,7 +111,7 @@ class NewDestinationForm extends Component {
             <option value="Munich">Munich</option>
             <option value="Melbourne">Melbourne</option>
             <option value="Bangkok">Bangkok</option>
-            <option value="Hong Kong">Hong Kong</option>
+            {/* <option value="Hong Kong">Hong Kong</option> */}
             <option value="Rome">Rome</option>
             {/* <option value="Tel Aviv">Tel Aviv</option> */}
             <option value="Cairo">Cairo</option>
@@ -97,6 +125,19 @@ class NewDestinationForm extends Component {
             <option value="Beijing">Beijing</option>
             <option value="Shanghai">Shanghai</option>
             <option value="Reykjavik">Reykjavik</option>
+            <option value="Prague">Prague</option>
+            <option value="Split">Split</option>
+            <option value="Jerusalem">Jerusalem</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Taipei">Taipei</option>
+            <option value="Vienna">Vienna</option>
+            <option value="Osaka">Osaka</option>
+            <option value="Milan">Milan</option>
+            <option value="Amsterdam">Amsterdam</option>
+            <option value="Seoul">Seoul</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Honolulu">Honolulu</option>
+            <option value="Tahiti">Tahiti</option>
             <input type="text" placeholder="Select City" /></select></div>
           <input style={{width: '25%'}} type="text" placeholder="Title" onChange={this.handleTitleInput} /><br /><br />
           <textarea style={{width: '40%'}} type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br /><br />
@@ -226,11 +267,12 @@ class NewDestinationForm extends Component {
         </div>
           <DatePicker handleStartDate={this.handleStartDate} /><br />
           {/* <input type="submit" value="Submit"></input> */}
-          <Button type="submit">
+          <Button className="submit-new-dest-button" type="submit">
             Submit
           </Button>
         </form>
-      </div>
+      </div></center>
+      // </div>
     )
   }
 }

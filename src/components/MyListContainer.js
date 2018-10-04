@@ -30,7 +30,7 @@ class MyListContainer extends Component {
     return (
     <div>
       <h1 className="my-list-header">Destinations/Events:</h1>
-          <Link to="/new_destination"><Button className="add-dest-button-list">Add Destination</Button></Link><br /><br /><br />
+          {/* <Link to="/new_destination"><Button className="add-dest-button-list">Add Destination</Button></Link><br /><br /><br /> */}
         <Grid container spacing={24} >
           {this.props.destinations.length > 0 ? destinations : null}
         </Grid>
