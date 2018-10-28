@@ -16,20 +16,25 @@ class AddToItineraryForm extends Component {
     date: ''
   };
 
+  // handles opening of the modal
   handleClickOpen = () => {
     this.setState({ open: true });
   };
 
+  // handles closing of modal when clicking anywhere not inside of the modal box
   handleClose = () => {
     this.setState({ open: false });
   };
 
+  // handles allowing users to type in input fields and update them
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
+  // handles submission of entire form and invokes addSubEvent function
+  // passing in entire state obj & ID of entire dest instance 
   handleSubmit = event => {
     event.preventDefault()
     this.props.addSubEvent(this.state, this.props.destination.id)
@@ -85,6 +90,8 @@ class AddToItineraryForm extends Component {
   }
 }
 
+// mapping dispatch to props to give access to the addSubEvent function from the reducer
+// passing in state obj and dest ID to the function
 function mapDispatchToProps(dispatch) {
   return {
     addSubEvent: (subEvent, id) => dispatch(addSubEvent(subEvent, id))

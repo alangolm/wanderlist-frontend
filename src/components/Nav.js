@@ -13,7 +13,7 @@ class Nav extends Component {
               <Image className="app-logo" src='https://previews.123rf.com/images/goliath/goliath0606/goliath060600082/445846-detailed-old-globe.jpg' />
               <Header.Content className="nav-bar-header">WanderList</Header.Content>
             </Header>
-            <div style={{width: '30%'}} />
+            <div style={{width: '23.5%'}} />
 
 
             <Menu.Item
