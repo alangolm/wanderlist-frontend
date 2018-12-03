@@ -70,27 +70,6 @@ class NewDestinationForm extends Component {
   render() {
     return (
 
-      // <div>
-      // <Form>
-      //   <Form.Group widths="equal">
-      //     <Form.Field
-      //       label='City'
-      //       options={this.cityOptions}
-      //       placeholder='City'
-      //       control={Input}
-      //     />
-      //   </Form.Group>
-      // </Form>
-
-
-
-
-
-
-
-
-
-
       <center><div className="ui form" widths="equal">
         <h1 className="new-dest-header">Add To Your Destinations!</h1>
         <form onSubmit={this.handleSubmit}>
