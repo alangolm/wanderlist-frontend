@@ -3,12 +3,8 @@ import React from 'react'
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-// import Button from '@material-ui/core/Button';
-// import IconButton from '@material-ui/core/IconButton';
-// import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import EditForm from './EditForm'
 import AddToItineraryForm from './AddToItineraryForm'
@@ -56,7 +52,6 @@ const DestinationBox = props => {
   return (
     <Grid item xs={4} className={classes.item}>
       <Card className={classes.card}>
-        {/* <CardActionArea> */}
           <CardContent>
             <Typography gutterBottom className={classes.title} variant="headline" component="h2">
               {props.destination.title}
@@ -78,13 +73,9 @@ const DestinationBox = props => {
               </Typography>
               {subEvents}
             </CardContent>
-          {/* </CardActionArea> */}
           <CardActions>
             <AddToItineraryForm destination={props.destination} />
             <EditForm destination={props.destination} />
-            {/* <IconButton aria-label="Delete" className={classes.button}>
-            <DeleteIcon size="medium" />
-          </IconButton> */}
         </CardActions>
       </Card>
     </Grid>

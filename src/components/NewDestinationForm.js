@@ -90,13 +90,11 @@ class NewDestinationForm extends Component {
             <option value="Munich">Munich</option>
             <option value="Melbourne">Melbourne</option>
             <option value="Bangkok">Bangkok</option>
-            {/* <option value="Hong Kong">Hong Kong</option> */}
             <option value="Rome">Rome</option>
             {/* <option value="Tel Aviv">Tel Aviv</option> */}
             <option value="Cairo">Cairo</option>
             <option value="Dubia">Dubia</option>
             <option value="Tokyo">Tokyo</option>
-            {/* <option value="South Korea">South Korea</option> */}
             <option value="Toronto">Toronto</option>
             <option value="Santorini">Santorini</option>
             <option value="Sydney">Sydney</option>
@@ -121,7 +119,6 @@ class NewDestinationForm extends Component {
           <input style={{width: '25%'}} type="text" placeholder="Title" onChange={this.handleTitleInput} /><br /><br />
           <textarea style={{width: '40%'}} type="text" placeholder="Description" onChange={this.handleDescriptionInput} /><br /><br />
 
-          {/* <input style={{width: '25%'}} type="text" placeholder="State" onChange={this.handleStateInput} /><br /><br /> */}
           <div className="field"><select style={{width: '25%'}} onChange={this.handleCityInput} className="ui search dropdown"><option value="">Select State</option>
             <option value="Alabama">Alabama</option>
           	<option value="Alaska">Alaska</option>
@@ -245,13 +242,11 @@ class NewDestinationForm extends Component {
             <input type="text" placeholder="Select Country" /></select>
         </div>
           <DatePicker handleStartDate={this.handleStartDate} /><br />
-          {/* <input type="submit" value="Submit"></input> */}
           <Button className="submit-new-dest-button" type="submit">
             Submit
           </Button>
         </form>
       </div></center>
-      // </div>
     )
   }
 }
